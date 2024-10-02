@@ -33,7 +33,23 @@
         Adaptation to smallness involves embracing simplicity, efficiency, and the nuances of limited space. It requires a shift in perspective, valuing detail over grandiosity, and making the most of what is available. This could mean a streamlined approach to problem-solving, resourcefulness in utilizing minimal materials, or finding beauty and purpose in the compact and concise. Adapting to smallness often demands creativity and flexibility, turning perceived limitations into opportunities for innovation and thoughtful design.</p>
 
     <script>
-       
+       document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+document.addEventListener('gesturechange', function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
+
+document.addEventListener('gestureend', function(e) {
+    e.preventDefault();
+    // special hack to prevent zoom-to-tabs gesture in safari
+    document.body.style.zoom = 0.99;
+});
     </script>
 </body>
 </html>
