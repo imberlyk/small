@@ -35,6 +35,8 @@
             -webkit-animation: spin 4s linear infinite;
             -moz-animation: spin 4s linear infinite;
             animation: spin 4s linear infinite;
+            opacity: 0; /* Start invisible */
+            transition: opacity 1s ease-in; /* Fade in effect */
         }
 
         @-moz-keyframes spin { 
@@ -57,13 +59,17 @@
     </h1>
 
     <p>*</p>
-   <p>★</p>
     <p>°</p>
     <p>.</p>
     <p>♡</p>
 
     <script>
+        let count = 0; // Track the number of duplicates
+        const maxDuplicates = 20; // Maximum number of duplicates
+
         function duplicateParagraphs() {
+            if (count >= maxDuplicates) return; // Stop if the limit is reached
+
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
                 // Create a duplicate of the paragraph
@@ -75,11 +81,23 @@
 
                 // Append the clone to the body
                 document.body.appendChild(clone);
+
+                // Fade in effect
+                setTimeout(() => {
+                    clone.style.opacity = 1; // Make it visible
+                }, 10); // Short delay for the transition to take effect
             });
+
+            count++; // Increment the count of duplicates
         }
 
         // Duplicate paragraphs every 2 seconds
-        setInterval(duplicateParagraphs, 2000);
+        const intervalId = setInterval(() => {
+            duplicateParagraphs();
+            if (count >= maxDuplicates) {
+                clearInterval(intervalId); // Stop the interval if limit is reached
+            }
+        }, 2000);
 
         // Prevent default zoom behavior in Safari
         document.addEventListener('gesturestart', function(e) {
