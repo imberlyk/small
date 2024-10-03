@@ -14,67 +14,88 @@
         body, html {
             height: 100%;
             overflow: hidden;
+            position: relative;
         }
 
-      h1{
-        width: 50vw;
-        padding:30px;
-        left: 110px;
-        top: 300px;
-        font-family:'Times New Roman', Times, serif;
-        font-size: 4px;
-        letter-spacing: 1px;
-        position: absolute;
-      }
+        h1 {
+            width: 50vw;
+            padding: 30px;
+            left: 110px;
+            top: 300px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 4px;
+            letter-spacing: 1px;
+            position: absolute;
+        }
 
-      p{
-        position: absolute;
-        top: 150px;
-        font-size: 9px;
-        left: 230px;
-        font-family:'Times New Roman', Times, serif;
-        -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
-}
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
-}
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
-}
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
-}
-      
+        p {
+            position: absolute;
+            font-size: 9px;
+            font-family: 'Times New Roman', Times, serif;
+            -webkit-animation: spin 4s linear infinite;
+            -moz-animation: spin 4s linear infinite;
+            animation: spin 4s linear infinite;
+        }
+
+        @-moz-keyframes spin { 
+            100% { -moz-transform: rotate(360deg); } 
+        }
+        @-webkit-keyframes spin { 
+            100% { -webkit-transform: rotate(360deg); } 
+        }
+        @keyframes spin { 
+            100% { 
+                -webkit-transform: rotate(360deg); 
+                transform: rotate(360deg); 
+            } 
+        }
     </style>
 </head>
 <body>
     <h1> 
-        Adaptation to smallness involves embracing simplicity, efficiency, and the nuances of limited space. It requires a shift in perspective, valuing detail over grandiosity, and making the most of what is available. This could mean a streamlined approach to problem-solving, resourcefulness in utilizing minimal materials, or finding beauty and purpose in the compact and concise. Adapting to smallness often demands creativity and flexibility, turning perceived limitations into opportunities for innovation and thoughtful design.</h1>
+        Adaptation to smallness involves embracing simplicity, efficiency, and the nuances of limited space. It requires a shift in perspective, valuing detail over grandiosity, and making the most of what is available. This could mean a streamlined approach to problem-solving, resourcefulness in utilizing minimal materials, or finding beauty and purpose in the compact and concise. Adapting to smallness often demands creativity and flexibility, turning perceived limitations into opportunities for innovation and thoughtful design.
+    </h1>
 
-        <p>*</p>
+    <p>*</p>
+   <p>★</p>
+    <p>°</p>
+    <p>.</p>
+    <p>♡</p>
+
     <script>
-       document.addEventListener('gesturestart', function(e) {
-    e.preventDefault();
-    // special hack to prevent zoom-to-tabs gesture in safari
-    document.body.style.zoom = 0.99;
-});
+        function duplicateParagraphs() {
+            const paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach(paragraph => {
+                // Create a duplicate of the paragraph
+                const clone = paragraph.cloneNode(true);
 
-document.addEventListener('gesturechange', function(e) {
-    e.preventDefault();
-    // special hack to prevent zoom-to-tabs gesture in safari
-    document.body.style.zoom = 0.99;
-});
+                // Set random position
+                clone.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+                clone.style.top = Math.random() * (window.innerHeight - 50) + 'px';
 
-document.addEventListener('gestureend', function(e) {
-    e.preventDefault();
-    // special hack to prevent zoom-to-tabs gesture in safari
-    document.body.style.zoom = 0.99;
-});
+                // Append the clone to the body
+                document.body.appendChild(clone);
+            });
+        }
+
+        // Duplicate paragraphs every 2 seconds
+        setInterval(duplicateParagraphs, 2000);
+
+        // Prevent default zoom behavior in Safari
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+            document.body.style.zoom = 0.99;
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+            document.body.style.zoom = 0.99;
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+            document.body.style.zoom = 0.99;
+        });
     </script>
 </body>
 </html>
