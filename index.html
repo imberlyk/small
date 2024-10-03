@@ -35,8 +35,8 @@ background: radial-gradient(circle, rgba(238,174,202,0) 0%, rgba(188,242,18,0.16
             -webkit-animation: spin 4s linear infinite;
             -moz-animation: spin 4s linear infinite;
             animation: spin 4s linear infinite;
-            opacity: 0; /* Start invisible */
-            transition: opacity 1s ease-in; /* Fade in effect */
+            opacity: 0;
+            transition: opacity 1s ease-in; 
         }
 
         @-moz-keyframes spin { 
@@ -65,10 +65,10 @@ background: radial-gradient(circle, rgba(238,174,202,0) 0%, rgba(188,242,18,0.16
 
     <script>
         let count = 0; // Track the number of duplicates
-        const maxDuplicates = 4; // Maximum number of duplicates
+        const maxDuplicates = 8; // Maximum number of duplicates
 
         function duplicateParagraphs() {
-            if (count >= maxDuplicates) return; // Stop if the limit is reached
+            if (count >= maxDuplicates) return; 
 
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
@@ -79,24 +79,24 @@ background: radial-gradient(circle, rgba(238,174,202,0) 0%, rgba(188,242,18,0.16
                 clone.style.left = Math.random() * (window.innerWidth - 50) + 'px';
                 clone.style.top = Math.random() * (window.innerHeight - 50) + 'px';
 
-                // Append the clone to the body
+         
                 document.body.appendChild(clone);
 
-                // Fade in effect
+           
                 setTimeout(() => {
                     clone.style.opacity = 1; 
-                }, 10); // Short delay for the transition to take effect
+                }, 10); 
             });
 
-            count++; // Increment the count of duplicates
+            count++; 
         }
 
         const intervalId = setInterval(() => {
             duplicateParagraphs();
             if (count >= maxDuplicates) {
-                clearInterval(intervalId); // Stop the interval if limit is reached
+                clearInterval(intervalId);
             }
-        }, 500);
+        }, 1000);
 
 
         document.addEventListener('gesturestart', function(e) {
