@@ -54,8 +54,8 @@
             -webkit-animation: spin 4s linear infinite;
             -moz-animation: spin 4s linear infinite;
             animation: spin 4s linear infinite;
-            opacity: 0;
-            transition: opacity 1s ease-in;
+            opacity: 0; /* Start invisible */
+            transition: opacity 2s ease-in; /* Fade in effect */
         }
 
         @-moz-keyframes spin { 
@@ -69,8 +69,7 @@
                 -webkit-transform: rotate(360deg); 
                 transform: rotate(360deg); 
             } 
-        }
-
+        } 
 
         marquee{
             top:20px;
@@ -101,8 +100,8 @@
     <p>⛞</p>
     <p>◝</p>
     <script>
-        let count = 0; // Track the number of duplicates
-        const maxDuplicates = 4; // Maximum number of duplicates
+    let count = 0; // Track the number of duplicates
+        const maxDuplicates = 5; // Maximum number of duplicates
 
         function duplicateParagraphs() {
             if (count >= maxDuplicates) return; 
@@ -116,10 +115,9 @@
                 clone.style.left = Math.random() * (window.innerWidth - 50) + 'px';
                 clone.style.top = Math.random() * (window.innerHeight - 50) + 'px';
 
-         
                 document.body.appendChild(clone);
 
-           
+                // Fade in effect
                 setTimeout(() => {
                     clone.style.opacity = 1; 
                 }, 10); 
@@ -128,14 +126,15 @@
             count++; 
         }
 
+        // Duplicate paragraphs every 3 seconds (increased from 1 second)
         const intervalId = setInterval(() => {
             duplicateParagraphs();
             if (count >= maxDuplicates) {
                 clearInterval(intervalId);
             }
-        }, 1000);
+        }, 3000); // Changed to 3000 ms for a slower interval
 
-
+        // Prevent default zoom behavior in Safari
         document.addEventListener('gesturestart', function(e) {
             e.preventDefault();
             document.body.style.zoom = 0.99;
