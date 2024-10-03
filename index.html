@@ -65,14 +65,14 @@
 
     <script>
         let count = 0; // Track the number of duplicates
-        const maxDuplicates = 20; // Maximum number of duplicates
+        const maxDuplicates = 4; // Maximum number of duplicates
 
         function duplicateParagraphs() {
             if (count >= maxDuplicates) return; // Stop if the limit is reached
 
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
-                // Create a duplicate of the paragraph
+                
                 const clone = paragraph.cloneNode(true);
 
                 // Set random position
@@ -84,22 +84,21 @@
 
                 // Fade in effect
                 setTimeout(() => {
-                    clone.style.opacity = 1; // Make it visible
+                    clone.style.opacity = 1; 
                 }, 10); // Short delay for the transition to take effect
             });
 
             count++; // Increment the count of duplicates
         }
 
-        // Duplicate paragraphs every 2 seconds
         const intervalId = setInterval(() => {
             duplicateParagraphs();
             if (count >= maxDuplicates) {
                 clearInterval(intervalId); // Stop the interval if limit is reached
             }
-        }, 2000);
+        }, 500);
 
-        // Prevent default zoom behavior in Safari
+
         document.addEventListener('gesturestart', function(e) {
             e.preventDefault();
             document.body.style.zoom = 0.99;
